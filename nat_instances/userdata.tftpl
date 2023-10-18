@@ -1,0 +1,34 @@
+#!/bin/bash
+set -euxo pipefail
+
+# install for lifecycle feedback
+yum -y install awscli
+
+# remove to prevent spurious requests on ECS endpoint
+systemctl stop ecs.service
+yum -y remove ecs-service-connect-agent ecs-init
+
+# install and configure CloudWatch
+yum -y install amazon-cloudwatch-agent
+systemctl enable amazon-cloudwatch-agent
+/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c ssm:${cloudwatch_config_ssm_parameter_name}
+
+# setup ipv4 forwarding
+echo "net.ipv4.ip_forward=1" >> /usr/lib/sysctl.d/nat_instance.conf
+sysctl --system
+
+# setup masquerading on the firewall
+yum -y install iptables-services
+
+# clear tables
+systemctl start iptables
+systemctl stop iptables
+# for OpenVPN
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+# for ECS logging into CloudWatch logs
+iptables -A PREROUTING -d 169.254.170.2/32 -p tcp -m tcp --dport 80 -j DNAT --to-destination 127.0.0.1:51679 -t nat
+iptables -A OUTPUT -d 169.254.170.2/32 -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 51679 -t nat
+
+service iptables save
+systemctl enable iptables
+systemctl start iptables
