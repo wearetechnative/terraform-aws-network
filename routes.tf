@@ -4,8 +4,8 @@ resource "aws_route_table" "this" {
   vpc_id = aws_vpc.this.id
 
   tags = {
-    Name                             = var.configuration.subnets[each.key].name
-    local.route_nat_gateway_tag_name = var.configuration.subnet_groups[var.configuration.subnets[each.key].subnet_group].nat_gateway
+    Name                                  = var.configuration.subnets[each.key].name
+    "${local.route_nat_gateway_tag_name}" = var.configuration.subnet_groups[var.configuration.subnets[each.key].subnet_group].nat_gateway
   }
 }
 
