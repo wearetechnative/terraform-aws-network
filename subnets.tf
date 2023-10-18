@@ -1,6 +1,6 @@
 module "subnet_addrs" {
   source                   = "hashicorp/subnets/cidr"
-  terraform_module_version = "1.0"
+  terraform_module_version = "1.0.0"
 
   base_cidr_block = aws_vpc.this.cidr_block
   # minimal of 4 free bits is required otherwise AWS will not accept the subnet
