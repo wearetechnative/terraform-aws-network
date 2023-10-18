@@ -1,0 +1,88 @@
+{
+    "subnet_groups": {
+        "public": {
+            "nat_gateway": false,
+            "internet_gateway": true
+        },
+        "private": {
+            "nat_gateway": true,
+            "internet_gateway": true
+        },
+        "datastore": {
+            "nat_gateway": false,
+            "internet_gateway": false
+        }
+    },
+    "subnets": {
+        "001": {
+            "name": "public_az1",
+            "is_provisioned": true,
+            "availability_zone": "eu-central-1a",
+            "networkaddress_bits": 4,
+            "subnet_group": "public"
+        },
+        "002": {
+            "name": "public_az2",
+            "is_provisioned": true,
+            "availability_zone": "eu-central-1b",
+            "networkaddress_bits": 4,
+            "subnet_group": "public"
+        },
+        "003": {
+            "name": "public_az3",
+            "is_provisioned": true,
+            "availability_zone": "eu-central-1c",
+            "networkaddress_bits": 4,
+            "subnet_group": "public"
+        },
+        "004": {
+            "name": "private_az1",
+            "is_provisioned": true,
+            "availability_zone": "eu-central-1a",
+            "networkaddress_bits": 8,
+            "subnet_group": "private"
+        },
+        "005": {
+            "name": "private_az2",
+            "is_provisioned": false,
+            "availability_zone": "eu-central-1b",
+            "networkaddress_bits": 8,
+            "subnet_group": "private"
+        },
+        "010": {
+            "name": "private_az2_new",
+            "is_provisioned": true,
+            "availability_zone": "eu-central-1b",
+            "networkaddress_bits": 8,
+            "subnet_group": "private"
+        },
+        "006": {
+            "name": "private_az3",
+            "is_provisioned": true,
+            "availability_zone": "eu-central-1c",
+            "networkaddress_bits": 8,
+            "subnet_group": "private"
+        },
+        "007": {
+            "name": "datastore_az1",
+            "is_provisioned": true,
+            "availability_zone": "eu-central-1a",
+            "networkaddress_bits": 4,
+            "subnet_group": "datastore"
+        },
+        "008": {
+            "name": "datastore_az2",
+            "is_provisioned": true,
+            "availability_zone": "eu-central-1b",
+            "networkaddress_bits": 4,
+            "subnet_group": "datastore"
+        },
+        "009": {
+            "name": "datastore_az3",
+            "is_provisioned": true,
+            "availability_zone": "eu-central-1c",
+            "networkaddress_bits": 4,
+            "subnet_group": "datastore"
+        }
+    }
+}

@@ -1,0 +1,19 @@
+{
+	"version": "0",
+	"id": "3483d11b-3ba6-a963-aebe-367ca3ea27ea",
+	"detail-type": "EC2 Instance-launch Lifecycle Action",
+	"source": "aws.autoscaling",
+	"account": "228305040478",
+	"time": "2022-09-01T06:35:22Z",
+	"region": "eu-central-1",
+	"resources": ["arn:aws:autoscaling:eu-central-1:228305040478:autoScalingGroup:e6e33b58-7aea-4c1a-8f77-002f8769c82a:autoScalingGroupName/ec2-asg-website_stack_dev-eu-central-1a"],
+	"detail": {
+		"LifecycleActionToken": "e9b527da-b2f3-4cd3-8341-84f9014f1cf7",
+		"AutoScalingGroupName": "ec2-asg-website_stack_dev-eu-central-1a",
+		"LifecycleHookName": "update_route_tables_launch",
+		"EC2InstanceId": "i-035ec155028170643",
+		"LifecycleTransition": "autoscaling:EC2_INSTANCE_LAUNCHING",
+		"Origin": "EC2",
+		"Destination": "AutoScalingGroup"
+	}
+}
