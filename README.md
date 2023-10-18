@@ -35,7 +35,7 @@ Possibility of automatically adding subnet groups when new availability zones ar
 |------|--------|---------|
 | <a name="module_nat_instances"></a> [nat\_instances](#module\_nat\_instances) | ./nat_instances | n/a |
 | <a name="module_s3_flow_logs"></a> [s3\_flow\_logs](#module\_s3\_flow\_logs) | ../s3 | n/a |
-| <a name="module_subnet_addrs"></a> [subnet\_addrs](#module\_subnet\_addrs) | hashicorp/subnets/cidr | n/a |
+| <a name="module_subnet_addrs"></a> [subnet\_addrs](#module\_subnet\_addrs) | hashicorp/subnets/cidr | 1.0.0 |
 
 ## Resources
 
