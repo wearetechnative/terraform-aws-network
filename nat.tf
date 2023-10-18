@@ -1,7 +1,8 @@
 resource "aws_eip" "this" {
   for_each = { for key in local.availability_zones_with_nat : key => key }
 
-  vpc = true # dont support EC2-ClassicLink but otherwise TF keeps reacreating this resource
+  #vpc = true # dont support EC2-ClassicLink but otherwise TF keeps reacreating this resource
+  domain = "vpc"
 
   # EIP may require IGW to exist prior to association. Use depends_on to set an explicit dependency on the IGW.
   depends_on = [

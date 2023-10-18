@@ -16,7 +16,7 @@ resource "aws_flow_log" "this" {
 }
 
 module "s3_flow_logs" {
-  source = "../s3"
+  source = "git@github.com:TechNative-B-V/terraform-aws-module-s3?ref=480790b2f1190bc1c4f94d2346e18ffcfa112c4f"
 
   name                   = "vpc-flow-logs-${replace(var.name, "_", "-")}"
   kms_key_arn            = var.kms_key_arn
