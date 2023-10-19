@@ -33,7 +33,7 @@ variable "kms_key_arn" {
 variable "use_nat_instances" {
   description = "Use cheap (t4g.nano) instances to save cost."
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "sqs_dlq_arn" {
