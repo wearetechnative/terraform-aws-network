@@ -34,7 +34,7 @@ Possibility of automatically adding subnet groups when new availability zones ar
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_nat_instances"></a> [nat\_instances](#module\_nat\_instances) | ./nat_instances | n/a |
-| <a name="module_s3_flow_logs"></a> [s3\_flow\_logs](#module\_s3\_flow\_logs) | ../s3 | n/a |
+| <a name="module_s3_flow_logs"></a> [s3\_flow\_logs](#module\_s3\_flow\_logs) | git@github.com:wearetechnative/terraform-aws-s3 | 73aa13eeb59184ce88cd9e925e9dc1504cc18940 |
 | <a name="module_subnet_addrs"></a> [subnet\_addrs](#module\_subnet\_addrs) | hashicorp/subnets/cidr | 1.0.0 |
 
 ## Resources
@@ -75,7 +75,7 @@ Possibility of automatically adding subnet groups when new availability zones ar
 | <a name="input_kms_key_arn"></a> [kms\_key\_arn](#input\_kms\_key\_arn) | KMS key to use for VPC Flow logs. | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | VPC name | `string` | n/a | yes |
 | <a name="input_sqs_dlq_arn"></a> [sqs\_dlq\_arn](#input\_sqs\_dlq\_arn) | SQS DLQ Arn to transfer unprocessed / failed infra messages into. | `string` | n/a | yes |
-| <a name="input_use_nat_instances"></a> [use\_nat\_instances](#input\_use\_nat\_instances) | Use cheap (t4g.nano) instances to save cost. | `bool` | `false` | no |
+| <a name="input_use_nat_instances"></a> [use\_nat\_instances](#input\_use\_nat\_instances) | Use cheap (t4g.nano) instances to save cost. | `bool` | `true` | no |
 | <a name="input_vpc_cidr_partition_id"></a> [vpc\_cidr\_partition\_id](#input\_vpc\_cidr\_partition\_id) | A number between 0 and 255 to prevent overlapping CIDR ranges. | `number` | n/a | yes |
 
 ## Outputs
