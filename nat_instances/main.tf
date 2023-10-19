@@ -1,5 +1,5 @@
 module "ec2_asg" {
-  source = "../../ec2_asg"
+  source = "git@github.com:wearetechnative/terraform-aws-ec2-asg?ref=48b3af572f2dfefd0eb95bb91e31ae8d5dfc0d76"
 
   # configured with ARM image and arch to save cost
 
