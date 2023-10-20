@@ -4,7 +4,7 @@ module "ec2_asg" {
   # configured with ARM image and arch to save cost
 
   name                   = var.name
-  initial_amount_of_pods = 1
+  #initial_amount_of_pods = 1
 
   ec2_ami_name_filter_list = ["amzn2-ami-ecs-hvm-2.0.*-arm64-ebs"]
   ec2_ami_owner_list       = ["591542846629"] # Amazon
