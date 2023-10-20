@@ -1,6 +1,6 @@
 module "iam_role" {
 
-  source = "git@github.com:wearetechnative/terraform-aws-iam-role?ref=9a975f62956b6c4f2593c169d06d1cfe8aad36be"
+  source = "git@github.com:wearetechnative/terraform-aws-iam-role"
 
   role_name = var.name
   role_path = "/ecs-dns-lambda/"
