@@ -1,11 +1,11 @@
 module "ec2_asg" {
-  #source = "../../terraform-aws-ec2-asg"
-  source = "git@github.com:wearetechnative/terraform-aws-ec2-asg.git?ref=48b3af572f2dfefd0eb95bb91e31ae8d5dfc0d76"
+  source = "git@github.com:wearetechnative/terraform-aws-ec2-asg?ref=c35c2271c0381470fd83907c8e1c568a77684984"
 
   # configured with ARM image and arch to save cost
+  initial_amount_of_pods = 1
 
   name                   = var.name
-  initial_amount_of_pods = 1
+  #initial_amount_of_pods = 1
 
   ec2_ami_name_filter_list = ["amzn2-ami-ecs-hvm-2.0.*-arm64-ebs"]
   ec2_ami_owner_list       = ["591542846629"] # Amazon
@@ -61,7 +61,7 @@ resource "aws_security_group_rule" "allow_wan_outbound" {
 }
 
 module "instance_role" {
-  source = "git@github.com:TechNative-B-V/terraform-aws-module-iam-role?ref=81c45f4d87bace3e990e64b92030292ac2fc480c"
+  source = "git@github.com:TechNative-B-V/terraform-aws-module-iam-role?ref=0fe916c27097706237692122e09f323f55e8237e"
 
   role_name = "nat-${var.name}-instance-role"
   role_path = "/network/"
