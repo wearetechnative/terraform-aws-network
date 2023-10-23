@@ -27,7 +27,7 @@ Possibility of automatically adding subnet groups when new availability zones ar
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >=4.3.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >=5.22.0 |
 
 ## Modules
 
