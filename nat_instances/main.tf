@@ -61,7 +61,7 @@ resource "aws_security_group_rule" "allow_wan_outbound" {
 }
 
 module "instance_role" {
-  source = "git@github.com:TechNative-B-V/terraform-aws-module-iam-role"
+  source = "git@github.com:TechNative-B-V/terraform-aws-module-iam-role?ref=0fe916c27097706237692122e09f323f55e8237e"
 
   role_name = "nat-${var.name}-instance-role"
   role_path = "/network/"
