@@ -15,7 +15,7 @@ resource "aws_nat_gateway" "this" {
 
   connectivity_type = "public"
   allocation_id     = each.value.allocation_id
-  # fetch first public subnet to locate nat gateway in in the same az zone, if not available then crash
+  # fetch first public subnet to locate nat gateway in the same az zone, if not available then crash
   subnet_id = element([for key, value in aws_subnet.this : value if value.availability_zone == each.key && !var.configuration.subnet_groups[var.configuration.subnets[key].subnet_group].nat_gateway && var.configuration.subnet_groups[var.configuration.subnets[key].subnet_group].internet_gateway], 0).id
 
   tags = {
