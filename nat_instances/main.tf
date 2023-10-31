@@ -5,7 +5,6 @@ module "ec2_asg" {
   initial_amount_of_pods = 1
 
   name                   = var.name
-  #initial_amount_of_pods = 1
 
   ec2_ami_name_filter_list = ["amzn2-ami-ecs-hvm-2.0.*-arm64-ebs"]
   ec2_ami_owner_list       = ["591542846629"] # Amazon
@@ -21,7 +20,6 @@ module "ec2_asg" {
   subnet_ids                = [var.public_subnet_id]
   use_public_ip             = false # we are the NAT gateway
   use_floating_ip           = true
-  own_eip_for_floaing_ip    = var.elastic_ip_id
   user_data_completion_hook = true
   sqs_dlq_arn               = var.sqs_dlq_arn
   kms_key_arn               = var.kms_key_arn

@@ -1,5 +1,5 @@
 resource "aws_eip" "this" {
-  for_each = { for key in local.availability_zones_with_nat : key => key }
+  for_each = { for key in local.availability_zones_with_nat : key => key if !var.use_nat_instances }
 
   #vpc = true # dont support EC2-ClassicLink but otherwise TF keeps reacreating this resource
   domain = "vpc"
@@ -32,17 +32,20 @@ resource "aws_nat_gateway" "this" {
 module "nat_instances" {
   source = "./nat_instances"
 
-  for_each = { for k, v in aws_eip.this : k => v if var.use_nat_instances }
+  for_each = { for key in local.availability_zones_with_nat : key => key if var.use_nat_instances}
 
   name        = "${var.name}-${each.key}"
   kms_key_arn = var.kms_key_arn
   # fetch first public subnet to locate nat gateway in in the same az zone, if not available then crash
   public_subnet_id           = element([for key, value in aws_subnet.this : value if value.availability_zone == each.key && !var.configuration.subnet_groups[var.configuration.subnets[key].subnet_group].nat_gateway && var.configuration.subnet_groups[var.configuration.subnets[key].subnet_group].internet_gateway], 0).id
-  elastic_ip_id              = each.value.id
   sqs_dlq_arn                = var.sqs_dlq_arn
   route_nat_gateway_tag_name = local.route_nat_gateway_tag_name
 
   nat_route_table_arns = [for k, v in aws_route_table.this : v.arn if v.tags[local.route_nat_gateway_tag_name] == "true"]
+
+  depends_on = [
+    aws_internet_gateway.this
+  ]
 }
 
 resource "aws_route" "nat_gateway" {

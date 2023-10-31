@@ -13,11 +13,6 @@ variable "public_subnet_id" {
   type        = string
 }
 
-variable "elastic_ip_id" {
-  description = "Elastic IP"
-  type        = string
-}
-
 variable "sqs_dlq_arn" {
   description = "SQS DLQ Arn to transfer unprocessed / failed infra messages into."
   type        = string
