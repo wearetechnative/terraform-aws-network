@@ -9,7 +9,6 @@ module "ec2_asg" {
 
   ec2_ami_name_filter_list = ["amzn2-ami-ecs-hvm-2.0.*-arm64-ebs"]
   ec2_ami_owner_list       = ["591542846629"] # Amazon
-  ec2_root_initial_size    = 30
   ec2_instance_type        = "t4g.nano"
 
   instance_role_name = module.instance_role.role_name
