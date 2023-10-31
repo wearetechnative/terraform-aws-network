@@ -34,7 +34,7 @@ module "nat_instances" {
 
   for_each = { for k, v in aws_eip.this : k => v if var.use_nat_instances }
 
-  name        = "${var.name}-${each.key}"
+  name        = "nat-${var.name}-${each.key}"
   kms_key_arn = var.kms_key_arn
   # fetch first public subnet to locate nat gateway in in the same az zone, if not available then crash
   public_subnet_id           = element([for key, value in aws_subnet.this : value if value.availability_zone == each.key && !var.configuration.subnet_groups[var.configuration.subnets[key].subnet_group].nat_gateway && var.configuration.subnet_groups[var.configuration.subnets[key].subnet_group].internet_gateway], 0).id
