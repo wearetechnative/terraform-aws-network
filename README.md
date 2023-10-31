@@ -1,26 +1,60 @@
-# modules-aws/network
+# Terraform AWS Network
+
+TechNative's VPC boilerplate module.
+
+[![](we-are-technative.png)](https://www.technative.nl)
 
 ## Design goals
-- Standard 'Module guidelines' in the repository README.md. Any network specific design goals are listed below.
+
+- Standard 'Module guidelines' from https://docs-mcs.technative.eu/infra-as-code/terraform-code-organization/.
+- Any network specific design goals are listed below.
 - Do not implement security controls. Security is handled in the security groups.
 - Reset and control any default resources as much as possible.
 
-## External dependencies
-- Uses hashicorp/subnets/cidr to calculate consecutive CIDR blocks for usage in the subnets.
+## Features
 
-## Guidelines
+- create VPC
+- advanced subnet configuration in JSON
+- cheap NAT's (see `input_use_nat_instances`)
 
-Use the network.example.json to create your own network. Any users must use the outputs subnet_groups and be configured to use an entire subnet_group. Any additions on the network will then be automatically propagated to its users (e.g. ASG, ALB).
+## Usage
 
-This module defines subnet_groups as collection of subnets that can easily be extended and must be used as an single entity. Each user of subnets must have its subnet_group key configured and fetch any corresponding subnets from the output.subnet_groups. This allows any additionally subnets to be automatically picked up by the users.
+Use the network.example.json to create your own network. Any users must use the
+outputs subnet_groups and be configured to use an entire subnet_group. Any
+additions on the network will then be automatically propagated to its users
+(e.g. ASG, ALB).
 
-Beware: The subnets map key must be added in ascending order and removing any existing subnet must happen by setting is_provisioned to false. The reasoning for this is that we use hashicorp/subnets/cidr which calculates the CIDR blocks for us. These CIDR blocks don't have gaps and are consecutive. Only when the subnets map is extended then this mapping will remain stable.
+This module defines subnet_groups as collection of subnets that can easily be
+extended and must be used as an single entity. Each user of subnets must have
+its subnet_group key configured and fetch any corresponding subnets from the
+output.subnet_groups. This allows any additionally subnets to be automatically
+picked up by the users.
 
-Any subnet.subnet_group must refer to an existing key in the subnet_groups map. Use networkaddress_bits to define the amount of addresses provisioned for the subnet. This number must be higher than 3.
+Beware: The subnets map key must be added in ascending order and removing any
+existing subnet must happen by setting is_provisioned to false. The reasoning
+for this is that we use hashicorp/subnets/cidr which calculates the CIDR blocks
+for us. These CIDR blocks don't have gaps and are consecutive. Only when the
+subnets map is extended then this mapping will remain stable.
+
+Any subnet.subnet_group must refer to an existing key in the subnet_groups map.
+Use networkaddress_bits to define the amount of addresses provisioned for the
+subnet. This number must be higher than 3.
+
+## Troubleshooting
+
+### Error when creating cheap nat instances.
+
+There is a dependency problem when createing cheap nat instances. 
+
+**Solution** First enable NAT in network.json, `terraform apply`, then set
+`use_nat_instances = true` and rerun `terraform apply`.
 
 ## Future work / ideas
 
-Possibility of automatically adding subnet groups when new availability zones arrive. A downside to this is the fact that if many new azs are added then we overflow the available CIDR block. So it's not included for now. Each subnet still requires some manual configuration.
+Possibility of automatically adding subnet groups when new availability zones
+arrive. A downside to this is the fact that if many new azs are added then we
+overflow the available CIDR block. So it's not included for now. Each subnet
+still requires some manual configuration.
 
 <!-- BEGIN_TF_DOCS -->
 ## Providers
