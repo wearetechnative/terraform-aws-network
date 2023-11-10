@@ -40,15 +40,6 @@ Any subnet.subnet_group must refer to an existing key in the subnet_groups map.
 Use networkaddress_bits to define the amount of addresses provisioned for the
 subnet. This number must be higher than 3.
 
-## Troubleshooting
-
-### Error when creating cheap nat instances.
-
-There is a dependency problem when createing cheap nat instances. 
-
-**Solution** First enable NAT in network.json, `terraform apply`, then set
-`use_nat_instances = true` and rerun `terraform apply`.
-
 ## Future work / ideas
 
 Possibility of automatically adding subnet groups when new availability zones
