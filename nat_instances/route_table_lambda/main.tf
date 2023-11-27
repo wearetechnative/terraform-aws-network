@@ -30,7 +30,8 @@ data "aws_arn" "lambda" {
 resource "aws_lambda_function_event_invoke_config" "dlq" {
   function_name = var.name
 
-  maximum_event_age_in_seconds = 60
+  # NOTE This is disabled as this caused continuous configuration drift (60>0>null) in aws-proviver 5.26
+  # maximum_event_age_in_seconds = 60
   maximum_retry_attempts       = 2
 
   destination_config {
