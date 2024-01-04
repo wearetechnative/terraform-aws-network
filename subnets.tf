@@ -4,11 +4,19 @@ module "subnet_addrs" {
 
   base_cidr_block = aws_vpc.this.cidr_block
   # minimal of 4 free bits is required otherwise AWS will not accept the subnet
-  networks = [for key, value in var.configuration.subnets : { "name" : key, "new_bits" : (32 - local.base_address_netmask) - max(value.networkaddress_bits, 4) }]
+  networks = [
+     for key, value in var.configuration.subnets : {
+       "name" : key,
+       "new_bits" : (32 - local.base_address_netmask) - max(value.networkaddress_bits, 4)
+     }
+  ]
 }
 
 resource "aws_subnet" "this" {
-  for_each = { for key, value in var.configuration.subnets : key => value if value.is_provisioned }
+  for_each = {
+    for key, value in var.configuration.subnets :
+      key => value if value.is_provisioned
+  }
 
   vpc_id            = aws_vpc.this.id
   availability_zone = each.value.availability_zone
