@@ -18,21 +18,21 @@
             "name": "public_az1",
             "is_provisioned": true,
             "availability_zone": "eu-central-1a",
-            "networkaddress_bits": 4,
+            "networkaddress_bits": 8,
             "subnet_group": "public"
         },
         "002": {
             "name": "public_az2",
             "is_provisioned": true,
             "availability_zone": "eu-central-1b",
-            "networkaddress_bits": 4,
+            "networkaddress_bits": 8,
             "subnet_group": "public"
         },
         "003": {
             "name": "public_az3",
             "is_provisioned": true,
             "availability_zone": "eu-central-1c",
-            "networkaddress_bits": 4,
+            "networkaddress_bits": 8,
             "subnet_group": "public"
         },
         "004": {
@@ -67,21 +67,21 @@
             "name": "datastore_az1",
             "is_provisioned": true,
             "availability_zone": "eu-central-1a",
-            "networkaddress_bits": 4,
+            "networkaddress_bits": 8,
             "subnet_group": "datastore"
         },
         "008": {
             "name": "datastore_az2",
             "is_provisioned": true,
             "availability_zone": "eu-central-1b",
-            "networkaddress_bits": 4,
+            "networkaddress_bits": 8,
             "subnet_group": "datastore"
         },
         "009": {
             "name": "datastore_az3",
             "is_provisioned": true,
             "availability_zone": "eu-central-1c",
-            "networkaddress_bits": 4,
+            "networkaddress_bits": 8,
             "subnet_group": "datastore"
         }
     }
