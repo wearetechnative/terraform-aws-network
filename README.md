@@ -40,6 +40,9 @@ Any subnet.subnet_group must refer to an existing key in the subnet_groups map.
 Use networkaddress_bits to define the amount of addresses provisioned for the
 subnet. This number must be higher than 3.
 
+networkaddress_bits = 4 -> 12 available addresses
+networkaddress_bits = 8 -> 251 available addresses
+
 ## Future work / ideas
 
 Possibility of automatically adding subnet groups when new availability zones
