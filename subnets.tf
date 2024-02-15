@@ -41,7 +41,7 @@ resource "aws_network_acl_rule" "allow_all_inbound" {
   egress         = false
   protocol       = -1
   rule_action    = "allow"
-  cidr_block     = "0.0.0.0/0"
+  cidr_block     = aws_vpc.this.cidr_block
 }
 
 resource "aws_network_acl_rule" "allow_all_outbound" {
@@ -52,7 +52,7 @@ resource "aws_network_acl_rule" "allow_all_outbound" {
   egress         = true
   protocol       = -1
   rule_action    = "allow"
-  cidr_block     = "0.0.0.0/0"
+  cidr_block     = aws_vpc.this.cidr_block
 }
 
 resource "aws_network_acl_association" "this" {
