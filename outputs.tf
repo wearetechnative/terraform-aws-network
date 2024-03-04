@@ -10,3 +10,7 @@ output "subnet_groups" {
 output "vpc_id" {
   value = aws_vpc.this.id
 }
+
+output "cidr_blocks" {
+  value = aws_vpc.this.cidr_block
+}
