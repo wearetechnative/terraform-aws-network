@@ -16,5 +16,5 @@ output "cidr_blocks" {
 }
 
 output "subnet_ids" {
-  value = aws_vpc.this.subnet_ids
+  value = [aws_vpc.this.subnet_ids]
 }
