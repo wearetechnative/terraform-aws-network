@@ -4,6 +4,9 @@ resource "aws_eip" "this" {
   #vpc = true # dont support EC2-ClassicLink but otherwise TF keeps reacreating this resource
   domain = "vpc"
 
+  tags = {
+    "Name" = "ec2-asg-nat-${var.name}-${each.key}"
+  }
   # EIP may require IGW to exist prior to association. Use depends_on to set an explicit dependency on the IGW.
   depends_on = [
     aws_internet_gateway.this
