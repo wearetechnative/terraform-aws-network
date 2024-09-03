@@ -1,7 +1,7 @@
 # stolen from https://github.com/hashicorp/terraform/issues/8344
 
 module "lambda" {
-  source = "git@github.com:wearetechnative/terraform-aws-lambda?ref=a9ee011680a1db355691f4fdbeffdc181d886591"
+  source = "git@github.com:wearetechnative/terraform-aws-lambda?ref=6d454d4a19f565c1ef423f870b28cadf6e4800d6"
 
   name              = var.name
   role_arn          = module.iam_role.role_arn
