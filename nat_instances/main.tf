@@ -1,5 +1,5 @@
 module "ec2_asg" {
-  source = "git@github.com:wearetechnative/terraform-aws-ec2-asg?ref=efcf8f19ee5b4b72b4bec182b90a6f14c0cad369"
+  source = "github.com/wearetechnative/terraform-aws-ec2-asg?ref=d654386d6baf67ff00d6e525448b9f2b3a48df3e"
 
   # configured with ARM image and arch to save cost
   initial_amount_of_pods = 1
@@ -59,7 +59,7 @@ resource "aws_security_group_rule" "allow_wan_outbound" {
 }
 
 module "instance_role" {
-  source = "git@github.com:wearetechnative/terraform-aws-iam-role?ref=0fe916c27097706237692122e09f323f55e8237e"
+  source = "github.com/wearetechnative/terraform-aws-iam-role?ref=9229bbd0280807cbc49f194ff6d2741265dc108a"
 
   role_name = "nat-${var.name}-instance-role"
   role_path = "/network/"
