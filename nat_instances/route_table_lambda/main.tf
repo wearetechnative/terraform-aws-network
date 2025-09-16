@@ -20,7 +20,7 @@ module "lambda" {
   kms_key_arn = var.kms_key_arn
   memory_size = 128
   timeout     = 10
-  runtime     = "python3.9"
+  runtime     = "python3.13"
 }
 
 data "aws_arn" "lambda" {
