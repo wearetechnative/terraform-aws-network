@@ -1,5 +1,5 @@
 module "ec2_asg" {
-  source = "github.com/wearetechnative/terraform-aws-ec2-asg?ref=d654386d6baf67ff00d6e525448b9f2b3a48df3e"
+  source = "github.com/wearetechnative/terraform-aws-ec2-asg?ref=3162602e1265a4673e3fc6cac6d95efad7a5d8c7"
 
   # configured with ARM image and arch to save cost
   initial_amount_of_pods = 1
