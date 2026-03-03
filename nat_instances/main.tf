@@ -42,6 +42,7 @@ resource "aws_security_group" "this" {
 
 resource "aws_security_group_rule" "allow_from_vpc" {
   type              = "ingress"
+  description       = "Allow inbound traffic from VPC"
   from_port         = 0
   to_port           = 0
   protocol          = "-1"
@@ -51,10 +52,11 @@ resource "aws_security_group_rule" "allow_from_vpc" {
 
 resource "aws_security_group_rule" "allow_wan_outbound" {
   type              = "egress"
+  description       = "Allow outbound wan traffic"
   from_port         = 0
   to_port           = 0
   protocol          = "-1"
-  cidr_blocks       = ["0.0.0.0/0"]
+  cidr_blocks       = [data.aws_vpc.this.cidr_block]
   security_group_id = aws_security_group.this.id
 }
 
