@@ -1,5 +1,4 @@
 # Terraform AWS [Network] ![](https://img.shields.io/github/actions/workflow/status/wearetechnative/terraform-aws-network/tflint.yaml?branch=main&style=plastic)
-https://img.shields.io/github/actions/workflow/status/<user>/<repo>/test.yml?branch=main
 
 TechNative's VPC boilerplate module.
 
