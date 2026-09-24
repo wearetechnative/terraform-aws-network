@@ -63,7 +63,7 @@ still requires some manual configuration.
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_nat_instances"></a> [nat\_instances](#module\_nat\_instances) | ./nat_instances | n/a |
-| <a name="module_s3_flow_logs"></a> [s3\_flow\_logs](#module\_s3\_flow\_logs) | git@github.com:wearetechnative/terraform-aws-s3 | 73aa13eeb59184ce88cd9e925e9dc1504cc18940 |
+| <a name="module_s3_flow_logs"></a> [s3\_flow\_logs](#module\_s3\_flow\_logs) | github.com/wearetechnative/terraform-aws-s3 | 945d79d5d12cbc2e281afae53c74367a3c6bfd6e |
 | <a name="module_subnet_addrs"></a> [subnet\_addrs](#module\_subnet\_addrs) | hashicorp/subnets/cidr | 1.0.0 |
 
 ## Resources
@@ -111,6 +111,9 @@ still requires some manual configuration.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_cidr_blocks"></a> [cidr\_blocks](#output\_cidr\_blocks) | n/a |
+| <a name="output_route_table_ids_by_group"></a> [route\_table\_ids\_by\_group](#output\_route\_table\_ids\_by\_group) | n/a |
 | <a name="output_subnet_groups"></a> [subnet\_groups](#output\_subnet\_groups) | n/a |
+| <a name="output_subnet_ids_by_group"></a> [subnet\_ids\_by\_group](#output\_subnet\_ids\_by\_group) | n/a |
 | <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | n/a |
 <!-- END_TF_DOCS -->

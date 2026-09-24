@@ -14,3 +14,25 @@ output "vpc_id" {
 output "cidr_blocks" {
   value = aws_vpc.this.cidr_block
 }
+
+output "subnet_ids_by_group" {
+  value = {
+    for group_key in keys(var.configuration.subnet_groups) :
+    group_key => [
+      for subnet_key, subnet in aws_subnet.this :
+      subnet.id
+      if var.configuration.subnets[subnet_key].subnet_group == group_key
+    ]
+  }
+}
+
+output "route_table_ids_by_group" {
+  value = {
+    for group_key in keys(var.configuration.subnet_groups) :
+    group_key => [
+      for subnet_key, route_table in aws_route_table.this :
+      route_table.id
+      if var.configuration.subnets[subnet_key].subnet_group == group_key
+    ]
+  }
+}
