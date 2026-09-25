@@ -105,6 +105,7 @@ still requires some manual configuration.
 | <a name="input_name"></a> [name](#input\_name) | VPC name | `string` | n/a | yes |
 | <a name="input_sqs_dlq_arn"></a> [sqs\_dlq\_arn](#input\_sqs\_dlq\_arn) | SQS DLQ Arn to transfer unprocessed / failed infra messages into. | `string` | n/a | yes |
 | <a name="input_use_nat_instances"></a> [use\_nat\_instances](#input\_use\_nat\_instances) | Use cheap (t4g.nano) instances to save cost. | `bool` | `false` | no |
+| <a name="input_vpc_cidr_base"></a> [vpc\_cidr\_base](#input\_vpc\_cidr\_base) | First Octet of the VPC CIDR | `number` | `10` | no |
 | <a name="input_vpc_cidr_partition_id"></a> [vpc\_cidr\_partition\_id](#input\_vpc\_cidr\_partition\_id) | A number between 0 and 255 to prevent overlapping CIDR ranges. | `number` | n/a | yes |
 
 ## Outputs

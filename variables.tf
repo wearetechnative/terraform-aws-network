@@ -40,3 +40,9 @@ variable "sqs_dlq_arn" {
   description = "SQS DLQ Arn to transfer unprocessed / failed infra messages into."
   type        = string
 }
+
+variable "vpc_cidr_base" {
+  description = "First Octet of the VPC CIDR"
+  type = number
+  default = 10
+}

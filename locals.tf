@@ -1,6 +1,6 @@
 locals {
   base_address_netmask = 16
-  base_address         = "10.${var.vpc_cidr_partition_id}.0.0/${local.base_address_netmask}"
+  base_address         = "${var.vpc_cidr_base}.${var.vpc_cidr_partition_id}.0.0/${local.base_address_netmask}"
 
   # can be changed to variable in case we need multiple VPCs per account
   name = var.name
