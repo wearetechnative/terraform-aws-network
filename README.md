@@ -31,18 +31,15 @@ its subnet_group key configured and fetch any corresponding subnets from the
 output.subnet_groups. This allows any additionally subnets to be automatically
 picked up by the users.
 
-Beware: The subnets map key must be added in ascending order and removing any
-existing subnet must happen by setting is_provisioned to false. The reasoning
-for this is that we use hashicorp/subnets/cidr which calculates the CIDR blocks
-for us. These CIDR blocks don't have gaps and are consecutive. Only when the
-subnets map is extended then this mapping will remain stable.
-
 Any subnet.subnet_group must refer to an existing key in the subnet_groups map.
-Use networkaddress_bits to define the amount of addresses provisioned for the
-subnet. This number must be higher than 3.
+Use `networkaddress_bits` to set the number of host bits and `subnet_number` to
+select a specific subnet within the VPC CIDR. For a `10.10.0.0/16` VPC, the
+following creates `10.10.20.0/24`:
 
-networkaddress_bits = 4 -> 12 available addresses
-networkaddress_bits = 8 -> 251 available addresses
+```hcl
+networkaddress_bits = 8
+subnet_number       = 20
+```
 
 ## Future work / ideas
 
@@ -52,11 +49,18 @@ overflow the available CIDR block. So it's not included for now. Each subnet
 still requires some manual configuration.
 
 <!-- BEGIN_TF_DOCS -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.1.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >=5.22.0 |
+
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >=5.22.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.66.0 |
 
 ## Modules
 
@@ -100,7 +104,7 @@ still requires some manual configuration.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_configuration"></a> [configuration](#input\_configuration) | Configuration object indicating required setup. | <pre>object({<br>    subnet_groups : map(object({<br>      nat_gateway : bool<br>      internet_gateway : bool<br>    }))<br>    subnets : map(object({<br>      name : string<br>      is_provisioned : bool<br>      availability_zone : string<br>      networkaddress_bits : number<br>      subnet_group : string<br>    }))<br>  })</pre> | n/a | yes |
+| <a name="input_configuration"></a> [configuration](#input\_configuration) | Configuration object indicating required setup. | <pre>object({<br/>    subnet_groups : map(object({<br/>      nat_gateway : bool<br/>      internet_gateway : bool<br/>    }))<br/>    subnets : map(object({<br/>      name : string<br/>      is_provisioned : bool<br/>      availability_zone : string<br/>      networkaddress_bits : number<br/>      subnet_number : optional(number)<br/>      subnet_group : string<br/>    }))<br/>  })</pre> | n/a | yes |
 | <a name="input_kms_key_arn"></a> [kms\_key\_arn](#input\_kms\_key\_arn) | KMS key to use for VPC Flow logs. | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | VPC name | `string` | n/a | yes |
 | <a name="input_sqs_dlq_arn"></a> [sqs\_dlq\_arn](#input\_sqs\_dlq\_arn) | SQS DLQ Arn to transfer unprocessed / failed infra messages into. | `string` | n/a | yes |

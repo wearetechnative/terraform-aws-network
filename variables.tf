@@ -20,9 +20,11 @@ variable "configuration" {
       is_provisioned : bool
       availability_zone : string
       networkaddress_bits : number
+      subnet_number : optional(number)
       subnet_group : string
     }))
   })
+
 }
 
 variable "kms_key_arn" {

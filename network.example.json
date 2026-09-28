@@ -19,6 +19,7 @@
             "is_provisioned": true,
             "availability_zone": "eu-central-1a",
             "networkaddress_bits": 8,
+            "subnet_number": 1,
             "subnet_group": "public"
         },
         "002": {
@@ -26,6 +27,7 @@
             "is_provisioned": true,
             "availability_zone": "eu-central-1b",
             "networkaddress_bits": 8,
+            "subnet_number": 2,
             "subnet_group": "public"
         },
         "003": {
@@ -33,6 +35,7 @@
             "is_provisioned": true,
             "availability_zone": "eu-central-1c",
             "networkaddress_bits": 8,
+            "subnet_number": 3,
             "subnet_group": "public"
         },
         "004": {
@@ -40,6 +43,7 @@
             "is_provisioned": true,
             "availability_zone": "eu-central-1a",
             "networkaddress_bits": 8,
+            "subnet_number": 4,
             "subnet_group": "private"
         },
         "005": {
@@ -47,6 +51,7 @@
             "is_provisioned": false,
             "availability_zone": "eu-central-1b",
             "networkaddress_bits": 8,
+            "subnet_number": 5,
             "subnet_group": "private"
         },
         "010": {
@@ -54,6 +59,7 @@
             "is_provisioned": true,
             "availability_zone": "eu-central-1b",
             "networkaddress_bits": 8,
+            "subnet_number": 10,
             "subnet_group": "private"
         },
         "006": {
@@ -61,6 +67,7 @@
             "is_provisioned": true,
             "availability_zone": "eu-central-1c",
             "networkaddress_bits": 8,
+            "subnet_number": 6,
             "subnet_group": "private"
         },
         "007": {
@@ -68,6 +75,7 @@
             "is_provisioned": true,
             "availability_zone": "eu-central-1a",
             "networkaddress_bits": 8,
+            "subnet_number": 7,
             "subnet_group": "datastore"
         },
         "008": {
@@ -75,6 +83,7 @@
             "is_provisioned": true,
             "availability_zone": "eu-central-1b",
             "networkaddress_bits": 8,
+            "subnet_number": 8,
             "subnet_group": "datastore"
         },
         "009": {
@@ -82,6 +91,7 @@
             "is_provisioned": true,
             "availability_zone": "eu-central-1c",
             "networkaddress_bits": 8,
+            "subnet_number": 9,
             "subnet_group": "datastore"
         }
     }
