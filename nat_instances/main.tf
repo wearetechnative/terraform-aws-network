@@ -67,6 +67,7 @@ module "instance_role" {
   aws_managed_policies = ["AmazonSSMManagedInstanceCore"]
   customer_managed_policies = {
     "cloudwatch_logs" : jsondecode(data.aws_iam_policy_document.cloudwatch_logs.json)
+    "cloudwatch_logs_stream" : jsondecode(data.aws_iam_policy_document.cloudwatch_logs_stream.json)
     "cloudwatch_agent" : jsondecode(data.aws_iam_policy_document.cloudwatch_agent.json)
   }
 

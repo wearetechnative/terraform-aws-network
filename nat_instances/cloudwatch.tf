@@ -2,9 +2,19 @@ data "aws_iam_policy_document" "cloudwatch_logs" {
   statement {
     sid = "CloudWatchLogGroups"
 
-    actions = ["logs:PutLogEvents", "logs:CreateLogStream"]
+    actions = ["logs:PutLogEvents"]
 
     resources = ["${aws_cloudwatch_log_group.nat_instance.arn}:log-stream:*"]
+  }
+}
+
+data "aws_iam_policy_document" "cloudwatch_logs_stream" {
+  statement {
+    sid = "CloudWatchLogStreams"
+
+    actions = ["logs:CreateLogStream"]
+
+    resources = [aws_cloudwatch_log_group.nat_instance.arn]
   }
 }
 
